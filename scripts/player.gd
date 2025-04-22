@@ -1,9 +1,6 @@
 extends CharacterBody2D
-
-
 const SPEED = 130.0
 @onready var animated_sprite = $AnimatedSprite2D
-
 
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("Left", "Right", "Up", "Down")
@@ -21,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 		
 	#Play animation
 	if velocity.x == 0:
-		animated_sprite.play("idle")
+		animated_sprite.play("idle")	
 	else: animated_sprite.play("walk")
 
 	move_and_slide()

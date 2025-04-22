@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://6eoonms3on8e"]
+
+[ext_resource type="Script" uid="uid://blyjufeglc5o0" path="res://sofa.gd" id="1_c3ceh"]
+[ext_resource type="Texture2D" uid="uid://baxjbqdody7ej" path="res://assets/Sofa.png" id="2_r8xc6"]
+[ext_resource type="PackedScene" uid="uid://b6tehfxlgh220" path="res://scenes/interactable.tscn" id="3_670dl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lh8g"]
+size = Vector2(50, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdljo"]
+radius = 33.1361
+
+[node name="sofa" type="StaticBody2D"]
+script = ExtResource("1_c3ceh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r8xc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_6lh8g")
+
+[node name="Interactable" parent="." instance=ExtResource("3_670dl")]
+interact_name = "Sleep"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_kdljo")

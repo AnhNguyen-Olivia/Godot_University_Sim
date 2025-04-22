@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://l2hokubqvv4"]
+
+[ext_resource type="Script" uid="uid://kc4ewsryofcw" path="res://scripts/door.gd" id="1_83dcw"]
+[ext_resource type="Texture2D" uid="uid://bf45f4ywom50f" path="res://assets/door.png" id="2_la1wf"]
+[ext_resource type="PackedScene" uid="uid://b6tehfxlgh220" path="res://scenes/interactable.tscn" id="3_18pbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xadh"]
+size = Vector2(26, 37)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83dcw"]
+radius = 16.0078
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource("1_83dcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_la1wf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_4xadh")
+
+[node name="Interactable" parent="." instance=ExtResource("3_18pbm")]
+interact_name = "Go to class"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 11.5)
+shape = SubResource("CircleShape2D_83dcw")

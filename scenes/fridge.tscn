@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b01ab20ftwemt"]
+
+[ext_resource type="Script" uid="uid://dmdumxcpjfkqd" path="res://scenes/fridge.gd" id="1_buvrw"]
+[ext_resource type="Texture2D" uid="uid://qn3323hcea60" path="res://assets/Fridge.png" id="1_ipvyg"]
+[ext_resource type="PackedScene" uid="uid://b6tehfxlgh220" path="res://scenes/interactable.tscn" id="2_sp1gv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buvrw"]
+size = Vector2(26, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_husjh"]
+radius = 21.0
+
+[node name="fridge" type="StaticBody2D"]
+script = ExtResource("1_buvrw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ipvyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_buvrw")
+
+[node name="Interactable" parent="." instance=ExtResource("2_sp1gv")]
+interact_name = "Eat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_husjh")
